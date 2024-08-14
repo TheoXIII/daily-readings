@@ -1,17 +1,20 @@
 import {Component} from 'react'
 import jsonp from 'jsonp';
 import axios from 'axios';
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import {DayInfo, Reading, Prayer} from '../type/universalis';
-
 import getRegion from '../service/getRegion';
-
-import ReadingCard from './ReadingCard';
 import GospelCard from './GospelCard';
+import ReadingCard from './ReadingCard';
+import { Container } from '../style/styles'
 
 import API_URL from '../service/apiUrl';
 import DailyReflection from './DailyReflection';
 import UniversalisCopyright from './UniversalisCopyright';
 import PsalmCard from './PsalmCard';
+
+import "swiper/css";
 
 interface IProps {    
 }
@@ -104,11 +107,35 @@ export default class Page extends Component<IProps, IState> {
         return(
             <>
                 <h1>Calendar: {this.state.regionName}</h1>
-                <ReadingCard name="First Reading" reading={this.state.reading1}/>
-                <PsalmCard name="Responsorial Psalm" reading={this.state.psalm}/>
-                {this.state.reading2 && <ReadingCard name="Second Reading" reading={this.state.reading2}/>}
-                <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation}/>
-                <DailyReflection/>
+                <Swiper spaceBetween={50} slidesPerView={1}>
+                    <SwiperSlide>
+                    <Container color="red">
+                        <ReadingCard name="First Reading" reading={this.state.reading1}/>
+                    </Container>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                    <Container color="yellow">
+                        <PsalmCard name="Responsorial Psalm" reading={this.state.psalm}/>
+                    </Container>
+                    </SwiperSlide>
+                    {this.state.reading2 &&
+                    <SwiperSlide>
+                    <Container color="blue">
+                        <ReadingCard name="Second Reading" reading={this.state.reading2}/>
+                    </Container>
+                    </SwiperSlide>
+                    }
+                    <SwiperSlide>
+                    <Container color="purple">
+                        <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation}/>
+                    </Container>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                    <Container color="pink">
+                        <DailyReflection/>
+                    </Container>
+                    </SwiperSlide>
+                </Swiper>
                 <UniversalisCopyright notice={this.state.copyright}/>
             </>
         )

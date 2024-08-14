@@ -1,7 +1,5 @@
 import {Prayer} from '../type/universalis';
 
-import './card.css'
-
 interface IProps {
     name: string,
     reading: Prayer | null

@@ -3,8 +3,6 @@ import axios from "axios";
 
 import API_URL from '../service/apiUrl';
 
-import "./card.css";
-
 interface RSSItem {
     creator: string,
     title: string,
