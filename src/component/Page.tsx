@@ -6,13 +6,12 @@ import {DayInfo, Reading, Prayer} from '../type/universalis';
 import getRegion from '../service/getRegion';
 
 import ReadingCard from './ReadingCard';
+import GospelCard from './GospelCard';
 
-let API_URL: string;
-
-if (process.env.NODE_ENV === "production")
-    API_URL = "https://daily-readings-zeta.vercel.app"
-else
-    API_URL = "http://localhost:3001"
+import API_URL from '../service/apiUrl';
+import DailyReflection from './DailyReflection';
+import UniversalisCopyright from './UniversalisCopyright';
+import PsalmCard from './PsalmCard';
 
 interface IProps {    
 }
@@ -106,8 +105,11 @@ export default class Page extends Component<IProps, IState> {
             <>
                 <h1>Calendar: {this.state.regionName}</h1>
                 <ReadingCard name="First Reading" reading={this.state.reading1}/>
-                <ReadingCard name="Gospel" reading={this.state.gospel}/>
-                <p dangerouslySetInnerHTML={{__html: this.state.copyright}}></p>
+                <PsalmCard name="Responsorial Psalm" reading={this.state.psalm}/>
+                {this.state.reading2 && <ReadingCard name="Second Reading" reading={this.state.reading2}/>}
+                <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation}/>
+                <DailyReflection/>
+                <UniversalisCopyright notice={this.state.copyright}/>
             </>
         )
     }
