@@ -8,4 +8,5 @@ export const Container = styled.div`
     padding: 20px;
     background-color: ${({ color }) => color};
     color: black;
+    border: #DFD3C3 1px solid;
 `;

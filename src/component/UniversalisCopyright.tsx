@@ -4,6 +4,8 @@ interface IProps {
 
 export default function UniversalisCopyright(props: IProps) {
     return (
-        <p dangerouslySetInnerHTML={{__html: props.notice}}></p>
+        <div className="copyright-notice">
+            <p dangerouslySetInnerHTML={{__html: props.notice}}></p>
+        </div>
     )
 }

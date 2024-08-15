@@ -1,13 +1,39 @@
 .page {
-    width: 400px;
+    max-width: 800px;
     margin: auto;
+}
+
+.card p {
+    font-size: 22px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.card h1 {
+    font-family: 'Franklin Gothic Medium' sans-serif;
+}
+
+.card h2 {
+    font-family: 'Franklin Gothic Medium' sans-serif;
+}
+
+.card h3 {
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+}
+
+.copyright-notice {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: scroll;
+    max-height: 50px;
 }
 
 .swiper-custom-bullet {
     height: 2px;
     width: 2px;
     background-color: white;
-  }
+}
   
 .swiper-custom-bullet.swiper-custom-bullet-active {
 height: 2px;
