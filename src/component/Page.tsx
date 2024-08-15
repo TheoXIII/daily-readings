@@ -15,6 +15,9 @@ import UniversalisCopyright from './UniversalisCopyright';
 import PsalmCard from './PsalmCard';
 
 import "swiper/css";
+import 'swiper/swiper-bundle.css';
+import "../style/page.css"
+import HeadingBar from './HeadingBar';
 
 interface IProps {    
 }
@@ -92,7 +95,7 @@ export default class Page extends Component<IProps, IState> {
         }
         if (data.Mass_R2)
             this.setState({reading2: data.Mass_R2})
-        this.setState({reading1: data.Mass_R1, psalm: data.Mass_Ps, gospelAcclamation: data.Mass_GA, gospel: data.Mass_G, copyright: data.copyright.text})
+        this.setState({dayInfo: {day: data.day, date: data.date}, reading1: data.Mass_R1, psalm: data.Mass_Ps, gospelAcclamation: data.Mass_GA, gospel: data.Mass_G, copyright: data.copyright.text})
     }
 
     getReadings(date: string, regionCode: string = "general") {
@@ -105,39 +108,44 @@ export default class Page extends Component<IProps, IState> {
 
     render() {
         return(
-            <>
-                <h1>Calendar: {this.state.regionName}</h1>
-                <Swiper spaceBetween={50} slidesPerView={1}>
+            <div className="page">
+                <HeadingBar region={this.state.regionName} dayInfo={this.state.dayInfo}/>
+                <Swiper slidesPerView={1}
+                pagination={{
+                    el: "swiper-container",
+                    bulletClass: "swiper-pagination-bullet",
+                    clickable: true,
+                  }}>
                     <SwiperSlide>
-                    <Container color="red">
+                    <Container color="#FAFAEB">
                         <ReadingCard name="First Reading" reading={this.state.reading1}/>
                     </Container>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <Container color="yellow">
+                    <Container color="#F3E4F1">
                         <PsalmCard name="Responsorial Psalm" reading={this.state.psalm}/>
                     </Container>
                     </SwiperSlide>
                     {this.state.reading2 &&
                     <SwiperSlide>
-                    <Container color="blue">
+                    <Container color="#D5EBDA">
                         <ReadingCard name="Second Reading" reading={this.state.reading2}/>
                     </Container>
                     </SwiperSlide>
                     }
                     <SwiperSlide>
-                    <Container color="purple">
+                    <Container color="#F4DACD">
                         <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation}/>
                     </Container>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <Container color="pink">
+                    <Container color="#EAD3D4">
                         <DailyReflection/>
                     </Container>
                     </SwiperSlide>
                 </Swiper>
                 <UniversalisCopyright notice={this.state.copyright}/>
-            </>
+            </div>
         )
     }
 }

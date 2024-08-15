@@ -1,0 +1,16 @@
+.heading-bar {
+    display: auto;
+    padding: 0xp 20px;
+}
+
+.calendar-label {
+    float: left;
+    font-size: 30px;
+    font-style: bold;
+    color: gray;
+}
+
+.day-label {
+    text-align: left;
+    font-size: 32px;
+}
