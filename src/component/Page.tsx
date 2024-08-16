@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import {DayInfo, Reading, Prayer} from '../type/universalis';
-import getRegion from '../service/getRegion';
+import getCountry from '../service/getCountry';
 import GospelCard from './GospelCard';
 import ReadingCard from './ReadingCard';
 import { Container } from '../style/styles'
@@ -18,6 +18,8 @@ import "swiper/css";
 import 'swiper/swiper-bundle.css';
 import "../style/page.css"
 import HeadingBar from './HeadingBar';
+import DioceseSelector from './DioceseSelector';
+import CountrySelector from './CountrySelector';
 
 interface IProps {    
 }
@@ -31,8 +33,11 @@ interface IState {
     gospelAcclamation: Prayer | null,
     gospel: Reading | null,
     date: string,
-    regionName: string,
-    regionCode: string
+    countryName: string,
+    countryCode: string,
+    dioceseName: string,
+    showDioceseSelector: boolean,
+    showCountrySelector: boolean
 }
 
 export default class Page extends Component<IProps, IState> {
@@ -47,15 +52,24 @@ export default class Page extends Component<IProps, IState> {
             gospelAcclamation: null,
             gospel: null,
             date: "",
-            regionName: "General Calendar",
-            regionCode: "general"
+            countryName: "General Calendar",
+            countryCode: "general",
+            dioceseName: "No Diocese",
+            showDioceseSelector: false,
+            showCountrySelector: false
         };
 
-        this.componentDidMount = this.componentDidMount.bind(this)
-        this.getReadings = this.getReadings.bind(this)
-        this.parseUniversalisResponse = this.parseUniversalisResponse.bind(this)
-        this.locationCallback = this.locationCallback.bind(this)
-        this.getLocation = this.getLocation.bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.getReadings = this.getReadings.bind(this);
+        this.parseUniversalisResponse = this.parseUniversalisResponse.bind(this);
+        this.locationCallback = this.locationCallback.bind(this);
+        this.getLocation = this.getLocation.bind(this);
+        this.setDiocese = this.setDiocese.bind(this);
+        this.showDioceseSelector = this.showDioceseSelector.bind(this);
+        this.hideDioceseSelector = this.hideDioceseSelector.bind(this);
+        this.showCountrySelector = this.showCountrySelector.bind(this);
+        this.hideCountrySelector = this.hideCountrySelector.bind(this);
+        this.setCountry = this.setCountry.bind(this);
     }
 
     componentDidMount() {
@@ -69,14 +83,36 @@ export default class Page extends Component<IProps, IState> {
         const date = `${dateObj.getFullYear()}${String(dateObj.getMonth()+1).padStart(2, '0')}${String(dateObj.getDate()).padStart(2, '0')}`
         this.setState({date: date})
         this.getReadings(date);
-    
+    }
 
+    showDioceseSelector() {
+        this.setState({showDioceseSelector: true});
+    }
+
+    hideDioceseSelector() {
+        this.setState({showDioceseSelector: false});
+    }
+
+    showCountrySelector() {
+        this.setState({showCountrySelector: true});
+    }
+
+    hideCountrySelector() {
+        this.setState({showCountrySelector: false});
+    }
+
+    setDiocese(diocese: {name: string, code: string}) {
+        this.setState({dioceseName: diocese.name, showDioceseSelector: false});
+        this.getReadings(this.state.date, diocese.code);
+    }
+
+    setCountry(country: {name: string, code: string}) {
+        this.setState({countryName: country.name, dioceseName: "No Diocese", countryCode: country.code, showCountrySelector: false});
+        this.getReadings(this.state.date, country.code);
     }
 
     locationCallback(response: any) {
-        const region = getRegion(response.data.address);
-        this.setState({regionName: region.name, regionCode: region.code})
-        this.getReadings(this.state.date, region.code)
+        this.setCountry(getCountry(response.data.address));
     }
 
     getLocation(position: any) {
@@ -109,7 +145,9 @@ export default class Page extends Component<IProps, IState> {
     render() {
         return(
             <div className="page">
-                <HeadingBar region={this.state.regionName} dayInfo={this.state.dayInfo}/>
+                <HeadingBar country={this.state.countryName} countryCode={this.state.countryCode} diocese={this.state.dioceseName} dayInfo={this.state.dayInfo} showDioceseSelector={this.showDioceseSelector} showCountrySelector={this.showCountrySelector}/>
+                <DioceseSelector setDiocese={this.setDiocese} countryCode={this.state.countryCode} show={this.state.showDioceseSelector} onHide={this.hideDioceseSelector}/>
+                <CountrySelector setCountry={this.setCountry} show={this.state.showCountrySelector} onHide={this.hideCountrySelector}/>
                 <Swiper slidesPerView={1}
                 pagination={{
                     el: "swiper-container",

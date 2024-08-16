@@ -1,0 +1,105 @@
+{
+    "asia.india": [
+        {"name": "Goa & Daman", "code": "asia.india.goa"}, 
+        {"name": "Goa & Daman - Old Goa", "code": "asia.india.oldgoa"}
+    ],
+    "australia": [
+        {"name": "Adelaide", "code": "australia.adelaide"},
+        {"name": "Armidale", "code": "australia.armidale"},
+        {"name": "Ballarat", "code": "australia.ballarat"},
+        {"name": "Bathurst", "code": "australia.bathurst"},
+        {"name": "Brisbane", "code": "australia.brisbane"},
+        {"name": "Broken Bay", "code": "australia.brokenbay"},
+        {"name": "Broome", "code": "australia.broome"},
+        {"name": "Bunbury", "code": "australia.bunbury"},
+        {"name": "Cairns", "code": "australia.cairns"},
+        {"name": "Canberra-Goulburn", "code": "australia.canberra"},
+        {"name": "Darwin", "code": "australia.darwin"},
+        {"name": "Geraldton", "code": "australia.geraldton"},
+        {"name": "Hobart", "code": "australia.hobart"},
+        {"name": "Lismore", "code": "australia.lismore"},
+        {"name": "Maitland-Newcastle", "code": "australia.maitland"},
+        {"name": "Melbourne", "code": "australia.melbourne"},
+        {"name": "Military Ordinariate", "code": "australia.military"},
+        {"name": "Ordinariate", "code": "australia.ordinariate"},
+        {"name": "Parramatta", "code": "australia.parramatta"},
+        {"name": "Perth", "code": "australia.perth"},
+        {"name": "Port Pirie", "code": "australia.portpirie"},
+        {"name": "Rockhampton", "code": "australia.rockhampton"},
+        {"name": "Sale", "code": "australia.sale"},
+        {"name": "Sandhurst", "code": "australia.sandhurst"},
+        {"name": "Sydney", "code": "australia.sydney"},
+        {"name": "Toowoomba", "code": "australia.toowoomba"},
+        {"name": "Townsville", "code": "australia.townsville"},
+        {"name": "Wagga Wagga", "code": "australia.wagga"},
+        {"name": "Wilcannia-Forbes", "code": "australia.wilcannia"},
+        {"name": "Wollongong", "code": "australia.wollongong"}
+    ],
+    "europe.denmark": [
+        {"name": "Greenland", "code": "europe.denmark.greenland"},
+        {"name": "The Faroe Islands", "code": "europe.denmark.faroes"}
+    ],
+    "europe.england": [
+        {"name": "Arundel & Brighton", "code": "europe.england.arundel"},
+        {"name": "Birmingham", "code": "europe.england.birmingham"},
+        {"name": "Brentwood", "code": "europe.england.brentwood"},
+        {"name": "Clifton", "code": "europe.england.clifton"},
+        {"name": "East Anglia", "code": "europe.england.eastanglia"},
+        {"name": "Hallam", "code": "europe.england.hallam"},
+        {"name": "Hexham & Newcastle", "code": "europe.england.hexham"},
+        {"name": "Lancaster", "code": "europe.england.lancaster"},
+        {"name": "Leeds", "code": "europe.england.leeds"},
+        {"name": "Liverpool", "code": "europe.england.liverpool"},
+        {"name": "Middlesbrough", "code": "europe.england.middlesbrough"},
+        {"name": "Northampton", "code": "europe.england.northampton"},
+        {"name": "Nottingham", "code": "europe.england.nottingham"},
+        {"name": "Ordinariate", "code": "europe.england.ordinariate"},
+        {"name": "Plymouth", "code": "europe.england.plymouth"},
+        {"name": "Portsmouth", "code": "europe.england.portsmouth"},
+        {"name": "Salford", "code": "europe.england.salford"},
+        {"name": "Shrewsbury", "code": "europe.england.shrewsbury"},
+        {"name": "Southwark", "code": "europe.england.southwark"},
+        {"name": "Westminster", "code": "europe.england.westminster"}
+    ],
+    "europe.malta": [
+        {"name": "Gozo", "code": "europe.malta.gozo"}
+    ],
+    "europe.scotland": [
+        {"name": "Aberdeen", "code": "europe.scotland.aberdeen"},
+        {"name": "Argyll & the Isles", "code": "europe.scotland.argyll"},
+        {"name": "Dunkeld", "code": "europe.scotland.dunkeld"},
+        {"name": "Galloway", "code": "europe.scotland.galloway"},
+        {"name": "Glasgow", "code": "europe.scotland.glasgow"},
+        {"name": "Glasgow - City of Glasgow", "code": "europe.scotland.glasgow.glasgow"},
+        {"name": "Motherwell", "code": "europe.scotland.motherwell"},
+        {"name": "Paisley", "code": "europe.scotland.paisley"},
+        {"name": "St Andrews & Edinburgh", "code": "europe.scotland.standrews"}
+    ],
+    "europe.wales": [
+        {"name": "Cardiff", "code": "europe.wales.cardiff"},
+        {"name": "Menevia", "code": "europe.wales.menevia"},
+        {"name": "Wrexham", "code": "europe.wales.wrexham"}
+    ],
+    "meast.sarabia": [
+        {"name": "Special Fridays", "code": "meast.sarabia.friday"}
+    ],
+    "nz": [
+        {"name": "Auckland", "code": "nz.auckland"},
+        {"name": "Christchurch", "code": "nz.christchurch"},
+        {"name": "Dunedin", "code": "nz.dunedin"},
+        {"name": "Hamilton", "code": "nz.hamilton"},
+        {"name": "Palmerston North", "code": "nz.palmerstonnorth"},
+        {"name": "Wellington", "code": "nz.wellington"}
+    ],
+    "usa": [
+        {"name": "Boston", "code": "usa.boston"},
+        {"name": "California", "code": "usa.california"},
+        {"name": "Hartford", "code": "usa.hartford"},
+        {"name": "Newark", "code": "usa.newark"},
+        {"name": "New York", "code": "usa.newyork"},
+        {"name": "Omaha", "code": "usa.omaha"},
+        {"name": "Ordinariate", "code": "usa.ordinariate"},
+        {"name": "Paterson", "code": "usa.paterson"},
+        {"name": "Philadelphia", "code": "usa.philadelphia"}
+    ]
+}

@@ -60,7 +60,7 @@ export default class DailyReflection extends Component<IProps, IState> {
 
     render() {
         return (
-            <div className="card">
+            <div className="text">
                 <h1>Daily Reflection</h1>
                 {this.state.content && <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>}
                 {this.state.link && <a href={this.state.link}>© 2024 My Catholic Life! Inc.</a>}

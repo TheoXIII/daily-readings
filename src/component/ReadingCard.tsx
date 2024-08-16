@@ -8,7 +8,7 @@ interface IProps {
 export default function ReadingCard(props: IProps) {
     if (props.reading)
         return(
-            <div className="card">
+            <div className="text">
                 <h1>{props.name}</h1>
                 <h3 dangerouslySetInnerHTML={{__html: props.reading.heading}}></h3>
                 <h3 dangerouslySetInnerHTML={{__html: props.reading.source}}></h3>

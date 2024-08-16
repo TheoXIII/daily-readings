@@ -3,26 +3,46 @@
     flex-direction: column;
     padding: 10px;
     background-color: #6482AD;
+    height: 22vh
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
 }
 
 .calendar-label {
-    float: left;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
     font-family: 'Roboto' sans-serif;
     font-size: 28px;
     font-weight: 700;
     color: #E2DAD6;
 }
 
+
+.calendar-label button {
+    background-color: #6482AD;
+    border-color: #E2DAD6;
+    border-width: 1px;
+    margin: 3px;
+    color: white;
+    font-family: "Inter";
+    font-size: 20px;
+    width: 50%;
+}
+
 .date-label {
     float: right;
     font-style: italic;
     font-weight: 500;
-    font-size: 28px;
+    font-size: 20px;
     color: #E2DAD6;
 }
 
 .day-label {
-    text-align: left;
-    font-size: 32px;
+    text-align: center;
+    font-size: 22px;
     color: #F5EDED;
 }

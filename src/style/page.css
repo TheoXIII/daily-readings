@@ -3,21 +3,23 @@
     margin: auto;
 }
 
-.card p {
+.text p {
     font-size: 22px;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
 }
 
-.card h1 {
+.text h1 {
+    font-size: 28px;
+    font-family: 'Franklin Gothic Medium' sans-serif;
+    font-style: italic;
+}
+
+.text h2 {
     font-family: 'Franklin Gothic Medium' sans-serif;
 }
 
-.card h2 {
-    font-family: 'Franklin Gothic Medium' sans-serif;
-}
-
-.card h3 {
+.text h3 {
     font-size: 24px;
     font-family: "Inter", sans-serif;
 }
@@ -26,7 +28,7 @@
     padding-left: 10px;
     padding-right: 10px;
     overflow-y: scroll;
-    max-height: 50px;
+    max-height: 8vh;
 }
 
 .swiper-custom-bullet {
@@ -39,4 +41,26 @@
 height: 2px;
 width: 2px;
 background-color: orange;
+}
+
+.selector-modal {
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    display: 'block';
+    position: 'initial';
+    border: 1px solid #E9ECEF;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.item-button {
+    padding: 3px;
+}
+
+.item-button button {
+    float: center;
+    background-color: #617ea8;
+    border-color: #617ea8;
+    width: 100%;
 }
