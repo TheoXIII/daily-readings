@@ -47,9 +47,17 @@ export default class DailyReflection extends Component<IProps, IState> {
         const date = new Date();
         const filteredItems = items.filter((elem) => elem.contentSnippet.includes(`${date.getDate()},`));
         if (filteredItems.length > 0) {
-            const content = filteredItems[0]["content:encoded"];
-            const trimmedContent = content.split("\n").slice(7, -10).join("\n")
-            this.setState({content: trimmedContent, link: filteredItems[0].link})
+            const lines = filteredItems[0]["content:encoded"].split("\n");
+            let start;
+            let end;
+            for (const [i, line] of lines.entries()) {
+                if (!start && line.includes("https://widget.spreaker.com/player"))
+                    start = i+1;
+                else if (start && !end && i != start && line.includes("<p style=\"text-align: center;\">"))
+                    end = i;
+            }
+            const content = lines.slice(start, end).join("\n");
+            this.setState({content: content, link: filteredItems[0].link});
         }
     }
 
