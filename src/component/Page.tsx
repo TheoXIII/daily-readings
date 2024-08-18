@@ -20,6 +20,7 @@ import "../style/page.css"
 import HeadingBar from './HeadingBar';
 import DioceseSelector from './DioceseSelector';
 import CountrySelector from './CountrySelector';
+import AudioPlayer from './AudioPlayer';
 
 interface IProps {    
 }

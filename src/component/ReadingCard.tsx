@@ -1,4 +1,5 @@
 import {Reading} from '../type/universalis';
+import AudioPlayer from './AudioPlayer';
 
 interface IProps {
     name: string,
@@ -13,6 +14,7 @@ export default function ReadingCard(props: IProps) {
                 <h3 dangerouslySetInnerHTML={{__html: props.reading.heading}}></h3>
                 <h3 dangerouslySetInnerHTML={{__html: props.reading.source}}></h3>
                 <p dangerouslySetInnerHTML={{__html: props.reading.text}}></p>
+                <AudioPlayer text={props.reading.text}/>
             </div>
         )
     else

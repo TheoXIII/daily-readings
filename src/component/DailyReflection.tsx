@@ -2,6 +2,7 @@ import {Component} from 'react';
 import axios from "axios";
 
 import API_URL from '../service/apiUrl';
+import AudioPlayer from './AudioPlayer';
 
 interface RSSItem {
     creator: string,
@@ -71,6 +72,7 @@ export default class DailyReflection extends Component<IProps, IState> {
             <div className="text">
                 <h1>Daily Reflection</h1>
                 {this.state.content && <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>}
+                {this.state.content && <AudioPlayer text={this.state.content}/>}<br/>
                 {this.state.link && <a href={this.state.link}>© 2024 My Catholic Life! Inc.</a>}
             </div>
         )

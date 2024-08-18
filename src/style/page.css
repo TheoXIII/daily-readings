@@ -36,6 +36,13 @@
     width: 2px;
     background-color: white;
 }
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
   
 .swiper-custom-bullet.swiper-custom-bullet-active {
 height: 2px;
