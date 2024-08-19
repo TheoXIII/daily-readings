@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import ReactPlayer from "react-player";
 import { PiSpeakerHighFill } from "react-icons/pi";
 
@@ -13,12 +13,14 @@ interface IProps {
 
 export default function AudioPlayer(props: IProps) {
     const [show, setShow] = useState(false);
+    const url = `${API_URL}/voice-universalis?date=${props.date}&regionCode=${props.regionCode}&readingCode=${props.readingCode}`
+    useEffect(() => setShow(false), [url]); // Hide the player if the URL changes.
 
     if (show) {
         return (
             <div className="player">
                 <ReactPlayer height="80px"
-                url={`${API_URL}/voice-universalis?date=${props.date}&regionCode=${props.regionCode}&readingCode=${props.readingCode}`}
+                url={url}
                 controls
                 config={{ file: { forceAudio: true } }}/>
             </div>
