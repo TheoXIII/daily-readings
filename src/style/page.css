@@ -71,3 +71,7 @@ background-color: orange;
     border-color: #617ea8;
     width: 100%;
 }
+
+.show-audio button {
+    font-size: 24px;
+}

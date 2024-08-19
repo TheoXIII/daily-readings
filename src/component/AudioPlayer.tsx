@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import ReactPlayer from "react-player";
+import { PiSpeakerHighFill } from "react-icons/pi";
 
 import API_URL from "../service/apiUrl";
 import { Button } from "react-bootstrap";
@@ -25,7 +26,7 @@ export default function AudioPlayer(props: IProps) {
     }
     return (
         <div className="show-audio">
-            <Button onClick={() => setShow(true)}>Load Audio</Button>
+            <Button onClick={() => setShow(true)}><PiSpeakerHighFill/></Button>
         </div>
     )
 }
