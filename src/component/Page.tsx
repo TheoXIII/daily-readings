@@ -37,6 +37,7 @@ interface IState {
     countryName: string,
     countryCode: string,
     dioceseName: string,
+    dioceseCode: string | null,
     showDioceseSelector: boolean,
     showCountrySelector: boolean
 }
@@ -56,6 +57,7 @@ export default class Page extends Component<IProps, IState> {
             countryName: "General Calendar",
             countryCode: "general",
             dioceseName: "No Diocese",
+            dioceseCode: null,
             showDioceseSelector: false,
             showCountrySelector: false
         };
@@ -103,17 +105,17 @@ export default class Page extends Component<IProps, IState> {
     }
 
     setDiocese(diocese: {name: string, code: string}) {
-        this.setState({dioceseName: diocese.name, showDioceseSelector: false});
+        this.setState({dioceseName: diocese.name, dioceseCode: diocese.code, showDioceseSelector: false});
         this.getReadings(this.state.date, diocese.code);
     }
 
     setCountry(country: {name: string, code: string}) {
-        this.setState({countryName: country.name, dioceseName: "No Diocese", countryCode: country.code, showCountrySelector: false});
+        this.setState({countryName: country.name, dioceseName: "No Diocese", dioceseCode: null, countryCode: country.code, showCountrySelector: false});
         this.getReadings(this.state.date, country.code);
     }
 
     locationCallback(response: any) {
-        this.setCountry(getCountry(response.data.address));
+        this.setCountry(getCountry(response.data));
     }
 
     getLocation(position: any) {
@@ -127,9 +129,8 @@ export default class Page extends Component<IProps, IState> {
     }
 
     parseUniversalisResponse(err: any, data: any) {
-        if (err) {
+        if (err) 
             return
-        }
         if (data.Mass_R2)
             this.setState({reading2: data.Mass_R2})
         this.setState({dayInfo: {day: data.day, date: data.date}, reading1: data.Mass_R1, psalm: data.Mass_Ps, gospelAcclamation: data.Mass_GA, gospel: data.Mass_G, copyright: data.copyright.text})
@@ -144,6 +145,11 @@ export default class Page extends Component<IProps, IState> {
     }
 
     render() {
+        let regionCode;
+        if (this.state.dioceseCode)
+            regionCode = this.state.dioceseCode;
+        else
+            regionCode = this.state.countryCode;
         return(
             <div className="page">
                 <HeadingBar country={this.state.countryName} countryCode={this.state.countryCode} diocese={this.state.dioceseName} dayInfo={this.state.dayInfo} showDioceseSelector={this.showDioceseSelector} showCountrySelector={this.showCountrySelector}/>
@@ -157,24 +163,24 @@ export default class Page extends Component<IProps, IState> {
                   }}>
                     <SwiperSlide>
                     <Container color="#FAFAEB">
-                        <ReadingCard name="First Reading" reading={this.state.reading1}/>
+                        <ReadingCard name="First Reading" reading={this.state.reading1} date={this.state.date} regionCode={regionCode} readingCode="reading1"/>
                     </Container>
                     </SwiperSlide>
                     <SwiperSlide>
                     <Container color="#F3E4F1">
-                        <PsalmCard name="Responsorial Psalm" reading={this.state.psalm}/>
+                        <PsalmCard name="Responsorial Psalm" reading={this.state.psalm} date={this.state.date} regionCode={regionCode}/>
                     </Container>
                     </SwiperSlide>
                     {this.state.reading2 &&
                     <SwiperSlide>
                     <Container color="#D5EBDA">
-                        <ReadingCard name="Second Reading" reading={this.state.reading2}/>
+                        <ReadingCard name="Second Reading" reading={this.state.reading2} date={this.state.date} regionCode={regionCode} readingCode="reading2"/>
                     </Container>
                     </SwiperSlide>
                     }
                     <SwiperSlide>
                     <Container color="#F4DACD">
-                        <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation}/>
+                        <GospelCard name="Gospel" reading={this.state.gospel} acclamation={this.state.gospelAcclamation} date={this.state.date} regionCode={regionCode}/>
                     </Container>
                     </SwiperSlide>
                     <SwiperSlide>

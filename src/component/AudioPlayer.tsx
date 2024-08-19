@@ -5,18 +5,19 @@ import API_URL from "../service/apiUrl";
 import { Button } from "react-bootstrap";
 
 interface IProps {
-    text: string;
+    date: string;
+    regionCode: string;
+    readingCode: "reading1" | "reading2" | "psalm" | "gospel_acclamation" | "gospel";
 }
 
 export default function AudioPlayer(props: IProps) {
     const [show, setShow] = useState(false);
 
     if (show) {
-        const text = props.text.replaceAll("&#x2019;","'").replaceAll(/(<.*?>)|(&.*?;)/g, " ");
         return (
             <div className="player">
                 <ReactPlayer height="80px"
-                url={`${API_URL}/voice?text=${encodeURI(text)}`}
+                url={`${API_URL}/voice-universalis?date=${props.date}&regionCode=${props.regionCode}&readingCode=${props.readingCode}`}
                 controls
                 config={{ file: { forceAudio: true } }}/>
             </div>

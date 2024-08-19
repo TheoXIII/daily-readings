@@ -3,7 +3,9 @@ import AudioPlayer from './AudioPlayer';
 
 interface IProps {
     name: string,
-    reading: Prayer | null
+    reading: Prayer | null,
+    date: string,
+    regionCode: string
 }
 
 export default function ReadingCard(props: IProps) {
@@ -13,7 +15,7 @@ export default function ReadingCard(props: IProps) {
                 <h1>{props.name}</h1>
                 <h3 dangerouslySetInnerHTML={{__html: props.reading.source}}></h3>
                 <p dangerouslySetInnerHTML={{__html: props.reading.text}}></p>
-                <AudioPlayer text={props.reading.text}/>
+                <AudioPlayer date={props.date} regionCode={props.regionCode} readingCode="psalm"/>
             </div>
         )
     else

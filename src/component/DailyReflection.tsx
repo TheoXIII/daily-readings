@@ -24,6 +24,7 @@ interface IProps {
 
 interface IState {
     content: string | null,
+    audio: string | null;
     link : string | null,
 }
 
@@ -33,10 +34,10 @@ export default class DailyReflection extends Component<IProps, IState> {
         super(props);
         this.state = {
             content: null,
-            link: null
+            audio: null,
+            link: null,
         }
         this.componentDidMount = this.componentDidMount.bind(this);
-        this.RSSCallback = this.RSSCallback.bind(this);
         this.getRSS = this.getRSS.bind(this);
     }
 
@@ -44,26 +45,9 @@ export default class DailyReflection extends Component<IProps, IState> {
         this.getRSS();
     }
 
-    RSSCallback(items: RSSItem[]) {
-        const date = new Date();
-        const filteredItems = items.filter((elem) => elem.contentSnippet.includes(`${date.getDate()},`));
-        if (filteredItems.length > 0) {
-            const lines = filteredItems[0]["content:encoded"].split("\n");
-            let start;
-            let end;
-            for (const [i, line] of lines.entries()) {
-                if (!start && line.includes("https://widget.spreaker.com/player"))
-                    start = i+1;
-                else if (start && !end && i != start && line.includes("<p style=\"text-align: center;\">"))
-                    end = i;
-            }
-            const content = lines.slice(start, end).join("\n");
-            this.setState({content: content, link: filteredItems[0].link});
-        }
-    }
-
     getRSS() {
-        axios.get(`${API_URL}/feed`).then((response) => this.RSSCallback(response.data));
+        const date = (new Date()).getDate(); //Get current day of month to send to server.
+        axios.get(`${API_URL}/feed?date=${date}`).then((response) => this.setState(response.data));
     }
 
 
@@ -72,7 +56,7 @@ export default class DailyReflection extends Component<IProps, IState> {
             <div className="text">
                 <h1>Daily Reflection</h1>
                 {this.state.content && <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>}
-                {this.state.content && <AudioPlayer text={this.state.content}/>}<br/>
+                {this.state.audio && <div dangerouslySetInnerHTML={{__html: this.state.audio}}></div>}
                 {this.state.link && <a href={this.state.link}>© 2024 My Catholic Life! Inc.</a>}
             </div>
         )
