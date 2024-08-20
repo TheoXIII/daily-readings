@@ -22,7 +22,7 @@ export default function HeadingBar(props: IProps) {
                 <div className="top">
                     <span className="date-label" dangerouslySetInnerHTML={{__html: props.dayInfo.date}}></span>
                 </div>
-                <div className="day-label" dangerouslySetInnerHTML={{__html: props.dayInfo.day}}></div>
+                <div className="day-label" dangerouslySetInnerHTML={{__html: props.dayInfo.day.replace("<div style=\"text-indent: -2em; margin-left: 3em;\">&#160;&#160;", "<div>")}}></div>
                 <span className="calendar-label">
                     <Button style={{float: "left"}} onClick={() => props.showCountrySelector()}>{props.country}</Button>
                     {keys.includes(props.countryCode) && <Button style={{float: "right"}} onClick={() => props.showDioceseSelector()}>{props.diocese}</Button>}
