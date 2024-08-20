@@ -1,7 +1,7 @@
 .heading-bar {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding-top: 10px;
     background-color: #6482AD;
     height: 22vh;
     border: solid 2px #08367a;
