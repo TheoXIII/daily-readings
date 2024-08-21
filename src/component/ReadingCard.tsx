@@ -1,5 +1,6 @@
 import {Reading} from '../type/universalis';
 import AudioPlayer from './AudioPlayer';
+import {sanitize} from 'dompurify';
 
 interface IProps {
     name: string,
@@ -14,9 +15,9 @@ export default function ReadingCard(props: IProps) {
         return(
             <div className="text">
                 <h1>{props.name}</h1>
-                <h3 dangerouslySetInnerHTML={{__html: props.reading.heading}}></h3>
-                <h3 dangerouslySetInnerHTML={{__html: props.reading.source}}></h3>
-                <p dangerouslySetInnerHTML={{__html: props.reading.text}}></p>
+                <h3 dangerouslySetInnerHTML={{__html: sanitize(props.reading.heading)}}></h3>
+                <h3 dangerouslySetInnerHTML={{__html: sanitize(props.reading.source)}}></h3>
+                <p dangerouslySetInnerHTML={{__html: sanitize(props.reading.text)}}></p>
                 <AudioPlayer date={props.date} regionCode={props.regionCode} readingCode={props.readingCode}/>
             </div>
         )
